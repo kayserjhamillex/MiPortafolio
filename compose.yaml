@@ -1,0 +1,65 @@
+name: portafolio-jhamil
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-portfolio}
+      POSTGRES_USER: ${POSTGRES_USER:-portfolio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Ejecuta scripts/configurar.py}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks: [database]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      APP_URL: ${APP_URL:?Configura tu dominio}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:?Configura el usuario}
+      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:?Configura el acceso privado}
+      SESSION_SECRET: ${SESSION_SECRET:?Configura el secreto de sesión}
+      COOKIE_SECURE: "true"
+      POSTGRES_DB: ${POSTGRES_DB:-portfolio}
+      POSTGRES_USER: ${POSTGRES_USER:-portfolio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configura la contraseña de PostgreSQL}
+      DB_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+    expose: ["8000"]
+    networks: [web, database]
+    read_only: true
+    tmpfs: ["/tmp"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+
+  caddy:
+    image: caddy:2-alpine
+    profiles: ["standalone"]
+    restart: unless-stopped
+    environment:
+      DOMAIN: ${DOMAIN:?Configura tu dominio}
+    ports: ["80:80", "443:443", "443:443/udp"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [web]
+    depends_on: [app]
+
+volumes:
+  postgres_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  web:
+  database:
+    internal: true

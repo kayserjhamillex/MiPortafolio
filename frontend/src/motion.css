@@ -1,0 +1,516 @@
+:root {
+  --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-fast: 240ms;
+  --motion-reveal: 850ms;
+}
+#root {
+  isolation: isolate;
+}
+.top,
+.footer,
+#main {
+  position: relative;
+}
+.top {
+  transition:
+    background-color 320ms,
+    box-shadow 320ms;
+}
+.page-scrolled .top {
+  box-shadow: 0 12px 40px #02050f50;
+  background-color: #090f20f5;
+}
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, #8e9bff, #75e5f1);
+  z-index: 100;
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+.ambient-scene {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+  contain: strict;
+}
+.ambient-light {
+  position: absolute;
+  width: 65vw;
+  height: 65vw;
+  max-width: 1000px;
+  max-height: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #3868b92b 0%,
+    #3868b90b 45%,
+    transparent 68%
+  );
+  animation: ambient-drift 20s ease-in-out infinite alternate;
+}
+.light-blue {
+  left: 29%;
+  top: -28%;
+}
+.light-violet {
+  left: -25%;
+  top: 26%;
+  background: radial-gradient(circle, #6745af20, transparent 65%);
+  animation-delay: -11s;
+  animation-duration: 26s;
+}
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#779bce06 1px, transparent 1px),
+    linear-gradient(90deg, #779bce06 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(transparent, #000 35%, transparent);
+}
+.ambient-stars {
+  position: absolute;
+  inset: 0;
+}
+.ambient-stars i {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #b4dfff;
+  box-shadow: 0 0 10px #8bcaff80;
+  opacity: 0.3;
+  animation: star-drift 14s ease-in-out infinite alternate;
+}
+.route-scene {
+  animation: route-arrive 680ms var(--motion-ease) both;
+}
+.hero-copy {
+  animation: none;
+}
+.hero-copy > * {
+  animation: hero-reveal 1050ms var(--motion-ease) both;
+}
+.hero-copy > :nth-child(2) {
+  animation-delay: 100ms;
+}
+.hero-copy > :nth-child(3) {
+  animation-delay: 200ms;
+}
+.hero-copy > :nth-child(4) {
+  animation-delay: 300ms;
+}
+.hero-copy > :nth-child(5) {
+  animation-delay: 400ms;
+}
+.hero-copy h1 span {
+  background-size: 200% 100%;
+  animation:
+    hero-reveal 1050ms 100ms var(--motion-ease) both,
+    title-spectrum 12s 1.2s ease-in-out infinite alternate;
+}
+.engine {
+  position: relative;
+  animation: engine-arrive 1300ms 180ms var(--motion-ease) both;
+}
+.engine:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    #b5e4ff0d 45%,
+    transparent 65%
+  );
+  background-size: 240% 100%;
+  animation: surface-light 10s ease-in-out infinite;
+}
+.engine-stack {
+  animation-duration: 7s;
+}
+.engine-stages button {
+  transition:
+    background-color 260ms,
+    border-color 260ms,
+    translate 260ms;
+}
+.engine-stages button:hover {
+  translate: 0 -2px;
+}
+.engine-stages button[aria-pressed="true"] {
+  box-shadow:
+    inset 0 0 16px #90dfff0d,
+    0 0 18px #7bbbf10c;
+}
+.motion-reveal {
+  opacity: 1;
+  translate: 0 28px;
+  transition:
+    translate var(--motion-reveal) var(--motion-ease),
+    box-shadow 300ms,
+    border-color 300ms;
+}
+.motion-reveal.motion-visible {
+  translate: 0 0;
+  transition-delay: var(--reveal-delay, 0ms), 0ms, 0ms;
+  animation: reveal-opacity var(--motion-reveal) var(--motion-ease) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+.work-tile,
+.case-card,
+.services-grid article {
+  position: relative;
+  isolation: isolate;
+  transform: perspective(1100px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transition:
+    transform 500ms var(--motion-ease),
+    box-shadow 350ms,
+    border-color 350ms;
+}
+.work-tile:after,
+.case-card:after,
+.services-grid article:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    450px circle at var(--light-x, 50%) var(--light-y, 50%),
+    #a7cfff14,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 350ms;
+}
+.pointer-lit:after {
+  opacity: 1;
+}
+.work-tile:hover,
+.case-card:hover {
+  box-shadow:
+    0 26px 65px #02081760,
+    0 0 0 1px #99baff24;
+}
+.case-art > div {
+  transition: scale 800ms var(--motion-ease);
+}
+.work-tile:hover .case-art > div,
+.case-card:hover .case-art > div {
+  scale: 1.045;
+}
+.button,
+.top-cta {
+  position: relative;
+  overflow: hidden;
+  transition:
+    translate var(--motion-fast),
+    box-shadow var(--motion-fast),
+    background-color var(--motion-fast);
+}
+.button:after {
+  content: "";
+  position: absolute;
+  inset: -60% -100%;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    #fff3 50%,
+    transparent 60%
+  );
+  transform: translateX(-40%);
+  transition: transform 700ms var(--motion-ease);
+}
+.button:hover:after {
+  transform: translateX(40%);
+}
+.button:hover {
+  translate: 0 -3px;
+  box-shadow: 0 12px 30px #528fca25;
+}
+.button:active {
+  translate: 0 0;
+}
+.arrow {
+  transition: transform 300ms var(--motion-ease);
+}
+a:hover > .arrow,
+.button:hover .arrow,
+.work-tile:hover .arrow {
+  transform: translate(3px, -3px);
+}
+.main-nav a {
+  position: relative;
+}
+.main-nav a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 1px;
+  background: #94d3f6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 350ms var(--motion-ease);
+}
+.main-nav a:hover:after,
+.main-nav a[aria-current="page"]:after {
+  transform: scaleX(1);
+}
+.home-about .about-photo {
+  overflow: hidden;
+}
+.about-photo img {
+  transition: scale 1000ms var(--motion-ease);
+}
+.home-about:hover .about-photo img {
+  scale: 1.035;
+}
+.evidence-strip strong {
+  display: inline-block;
+}
+.evidence-strip .motion-visible strong {
+  animation: metric-arrive 900ms var(--motion-ease) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+.motion-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 18px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;
+  padding: 10px 14px;
+  border: 1px solid #60789b66;
+  border-radius: 30px;
+  color: #c8d9ef;
+  background: #101a2ded;
+  font: 500 11px var(--mono, monospace);
+  cursor: pointer;
+  box-shadow: 0 6px 24px #0003;
+  transition:
+    background 200ms,
+    border-color 200ms;
+}
+.motion-toggle:hover {
+  border-color: #9ccef7;
+  background: #1a2b46;
+}
+.pause-icon {
+  width: 9px;
+  height: 10px;
+  border-inline: 2px solid currentColor;
+}
+.play-icon {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid currentColor;
+}
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes engine-arrive {
+  from {
+    opacity: 0;
+    transform: perspective(1400px) rotateY(-9deg) translateY(36px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1400px) rotateY(0) translateY(0) scale(1);
+  }
+}
+@keyframes route-arrive {
+  from {
+    opacity: 0.35;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes reveal-opacity {
+  from {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes metric-arrive {
+  from {
+    opacity: 0.3;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes ambient-drift {
+  to {
+    transform: translate3d(7%, 9%, 0) scale(1.12);
+  }
+}
+@keyframes star-drift {
+  to {
+    transform: translate3d(12px, -35px, 0);
+    opacity: 0.65;
+  }
+}
+@keyframes surface-light {
+  0%,
+  35% {
+    background-position: 100% 0;
+  }
+  80%,
+  100% {
+    background-position: -100% 0;
+  }
+}
+@keyframes title-spectrum {
+  to {
+    background-position: 100% 50%;
+  }
+}
+@media (max-width: 700px) {
+  .ambient-light {
+    width: 120vw;
+    height: 120vw;
+  }
+  .ambient-stars i:nth-child(n + 7) {
+    display: none;
+  }
+  .motion-toggle {
+    right: 12px;
+    bottom: 12px;
+    min-height: 44px;
+    font-size: 10px;
+    padding-inline: 12px;
+  }
+  .footer {
+    padding-bottom: 65px;
+  }
+  .route-scene {
+    animation-duration: 450ms;
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  .work-tile,
+  .case-card,
+  .services-grid article {
+    transform: none;
+  }
+  .work-tile:after,
+  .case-card:after,
+  .services-grid article:after {
+    display: none;
+  }
+}
+/* A pause always leaves content visible and actionable, including mid-entrance. */
+html[data-motion="paused"] *,
+html[data-motion="paused"] *:before,
+html[data-motion="paused"] *:after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+html[data-motion="paused"] .motion-reveal {
+  opacity: 1;
+  translate: none;
+}
+html[data-motion="paused"] .work-tile,
+html[data-motion="paused"] .case-card,
+html[data-motion="paused"] .services-grid article {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .motion-reveal {
+    opacity: 1;
+    translate: none;
+  }
+  .work-tile,
+  .case-card,
+  .services-grid article {
+    transform: none;
+  }
+  .ambient-stars {
+    display: none;
+  }
+}
+/* Keep the atmosphere visible through the hero's editorial surface. */
+.opening {
+  background: radial-gradient(
+    ellipse at 84% 36%,
+    #23395f70 0%,
+    #121f3b50 34%,
+    transparent 67%
+  );
+}
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.home-browse .work-tile:hover {
+  transform: perspective(1100px) translateY(-4px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+}
+.motion-paused:after {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-browse .work-tile:hover {
+    transform: none;
+  }
+}
+html[data-motion="paused"] .home-browse .work-tile:hover {
+  transform: none;
+}
+
+.motion-toggle {
+  position: static;
+  flex-shrink: 0;
+}
+.footer-inner {
+  flex-wrap: wrap;
+  gap: 22px;
+}
+.footer nav {
+  flex-wrap: wrap;
+}
+@media (max-width: 700px) {
+  .footer {
+    padding-bottom: 28px;
+  }
+}

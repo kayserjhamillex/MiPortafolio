@@ -1,0 +1,249 @@
+[
+  {
+    "id": "devops",
+    "category": "DevOps",
+    "state": "Proyecto de investigación",
+    "title": "Laboratorio DevOps institucional",
+    "summary": "De un repositorio GitLab a un entorno de despliegue con controles de calidad, seguridad y recuperación.",
+    "problem": "Unificar la práctica de entrega de software para que cada equipo pueda pasar por un flujo repetible y obtener evidencias de su trabajo.",
+    "decision": "Separar GitLab, SonarQube, runners, base de datos y entornos de aplicaciones. El pipeline de 14 etapas integra compilación, pruebas, controles de calidad y seguridad, despliegue y reversión.",
+    "evidence": "El flujo integra controles automáticos y una rúbrica de evaluación para conectar los hallazgos del pipeline con el trabajo de los equipos.",
+    "stack": [
+      "GitLab CI/CD",
+      "SonarQube",
+      "Docker",
+      "Trivy",
+      "OWASP ZAP"
+    ],
+    "visual": "<div class=\"art-label\"><span>PIPELINE INSTITUCIONAL</span><span>14 ETAPAS</span></div><div class=\"pipeline case-pipeline\"><span><b>01</b>Build</span><span><b>02</b>Pruebas</span><span><b>03</b>Control</span><span><b>04</b>Entrega</span></div><div class=\"diagram-footer\">GITLAB CI/CD <i></i> SONARQUBE <i></i> DOCKER</div>",
+    "slug": "laboratorio-devops"
+  },
+  {
+    "id": "clinic",
+    "category": "Salud",
+    "state": "Proyecto en ejecución",
+    "title": "Plataforma odontológica multisede",
+    "summary": "Un proyecto para conectar citas, operación clínica y seguimiento comercial en una organización con cuatro sedes.",
+    "problem": "Coordinar el seguimiento de pacientes y el trabajo de las sedes cuando la información está repartida entre distintos canales y procesos.",
+    "decision": "El alcance incluye ERP clínico, CRM y PWA de pacientes. La sede principal contempla operación sin conexión y el diseño contempla recordatorios y seguimiento de citas.",
+    "evidence": "El diseño conecta la agenda, la operación clínica y el seguimiento comercial. La coordinación entre sedes y la continuidad de atención guían las decisiones de arquitectura.",
+    "stack": [
+      "ERP clínico",
+      "CRM",
+      "PWA",
+      "PostgreSQL",
+      "n8n"
+    ],
+    "visual": "<div class=\"art-label\"><span>PLATAFORMA ODONTOLÓGICA</span><span>4 SEDES</span></div><div class=\"case-network\"><span class=\"network-center\">Operación multisede</span><div><span>Agenda</span><span>ERP clínico</span><span>CRM</span></div></div><div class=\"diagram-footer\">MAPA FUNCIONAL <i></i> PORTAL DE PACIENTES</div>",
+    "slug": "plataforma-odontologica"
+  },
+  {
+    "id": "school",
+    "category": "Educación",
+    "state": "Propuesta comercial",
+    "title": "Acceso y asistencia escolar",
+    "summary": "Propuesta NexKernel que conecta la página institucional con el registro de ingreso y la comunicación a las familias.",
+    "problem": "Reducir registros dispersos y facilitar que el personal escolar pueda consultar cuándo se registró el ingreso de un estudiante.",
+    "decision": "La propuesta contempla web institucional, asistencia, registro de ingreso, aviso al apoderado y credenciales con QR listas para imprimir. La impresión física se plantea como servicio externo.",
+    "evidence": "El registro de ingreso inicia un flujo que vincula la identidad del estudiante con su asistencia y el aviso al apoderado.",
+    "stack": [
+      "Web institucional",
+      "Asistencia",
+      "QR",
+      "Notificaciones"
+    ],
+    "visual": "<div class=\"art-label\"><span>ASISTENCIA ESCOLAR</span><span>PROPUESTA</span></div><div class=\"case-pipeline school-flow\"><span><b>01</b>Credencial QR</span><span><b>02</b>Registro</span><span><b>03</b>Aviso</span></div><div class=\"diagram-footer\">FLUJO DE INGRESO <i></i> NEXKERNEL</div>",
+    "slug": "asistencia-escolar"
+  },
+  {
+    "id": "elections",
+    "category": "Educación",
+    "state": "Implementación",
+    "slug": "elecciones-escolares",
+    "title": "Elecciones APAFA y municipio escolar",
+    "summary": "Plataforma electoral para organizar el padrón, registrar la votación y consolidar reportes institucionales.",
+    "problem": "Organizar un proceso electoral escolar requiere identificar a los electores habilitados, controlar duplicidades y conciliar los registros del proceso.",
+    "decision": "La solución utiliza React, FastAPI y PostgreSQL. El diseño distingue la administración institucional del comité electoral y aplica las reglas de habilitación del padrón.",
+    "evidence": "El trabajo incluye configuración de la plataforma, depuración de registros, soporte durante el proceso y reportes para la revisión de la institución.",
+    "stack": [
+      "React",
+      "FastAPI",
+      "PostgreSQL",
+      "Padrón electoral",
+      "Reportes"
+    ],
+    "visual": "<div class=\"art-label\"><span>EDUCACIÓN</span><span>IMPLEMENTACIÓN</span></div><div class=\"case-pipeline\"><span><b>01</b>Padrón</span><span><b>02</b>Habilitación</span><span><b>03</b>Votación</span><span><b>04</b>Reportes</span></div>"
+  },
+  {
+    "id": "mesa",
+    "category": "Sector público",
+    "state": "Diseño de solución",
+    "slug": "mesa-de-partes-digital",
+    "title": "Mesa de Partes Digital",
+    "summary": "Diseño de una plataforma para recibir documentos y dar seguimiento a su recorrido en escuelas policiales.",
+    "problem": "La recepción documental necesita un registro claro de cada trámite y una forma de consultar su situación sin depender de intercambios dispersos.",
+    "decision": "El planteamiento combina React, FastAPI y una PWA. El análisis incluye diseño de interfaces, procesos BPMN y criterios de calidad, seguridad y verificación del software.",
+    "evidence": "El alcance se centra en la recepción, el seguimiento documental y las responsabilidades de los participantes del proceso.",
+    "stack": [
+      "React",
+      "FastAPI",
+      "PWA",
+      "BPMN",
+      "Gestión documental"
+    ],
+    "visual": "<div class=\"art-label\"><span>SECTOR PÚBLICO</span><span>DISEÑO DE SOLUCIÓN</span></div><div class=\"case-pipeline\"><span><b>01</b>Recepción</span><span><b>02</b>Registro</span><span><b>03</b>Derivación</span><span><b>04</b>Seguimiento</span></div>"
+  },
+  {
+    "id": "municipal",
+    "category": "Sector público",
+    "state": "Diseño de solución",
+    "slug": "gestion-tributaria-municipal",
+    "title": "Gestión tributaria municipal",
+    "summary": "Diseño de un sistema para organizar información tributaria y apoyar los procesos de una municipalidad.",
+    "problem": "La gestión tributaria requiere información consistente y procesos que permitan consultar y actualizar registros con responsabilidades definidas.",
+    "decision": "La propuesta técnica utiliza React, FastAPI y PostgreSQL. El análisis incorpora criterios de gestión de calidad, calidad del producto, seguridad y pruebas.",
+    "evidence": "El diseño relaciona procesos, roles y datos. Las decisiones funcionales se vinculan con las necesidades de la entidad y su operación.",
+    "stack": [
+      "React",
+      "FastAPI",
+      "PostgreSQL",
+      "Análisis de procesos",
+      "Calidad de software"
+    ],
+    "visual": "<div class=\"art-label\"><span>SECTOR PÚBLICO</span><span>DISEÑO DE SOLUCIÓN</span></div><div class=\"case-pipeline\"><span><b>01</b>Procesos</span><span><b>02</b>Registros</span><span><b>03</b>Operación</span><span><b>04</b>Control</span></div>"
+  },
+  {
+    "id": "writer",
+    "category": "Web",
+    "state": "Diseño de producto",
+    "slug": "plataforma-editorial-escritor",
+    "title": "Plataforma editorial para escritor",
+    "summary": "Diseño de una web de autor con catálogo de obras y panel editorial para gestionar su contenido.",
+    "problem": "Un escritor con obras publicadas necesita presentar su trayectoria y facilitar que sus lectores exploren su producción literaria.",
+    "decision": "La experiencia contempla computadora, tableta y celular, junto con autenticación y dashboard. La arquitectura propuesta utiliza React, FastAPI y PostgreSQL.",
+    "evidence": "El trabajo aborda la presentación de las obras, la navegación del lector y la gestión editorial de la información desde el panel.",
+    "stack": [
+      "React",
+      "FastAPI",
+      "PostgreSQL",
+      "Diseño responsive",
+      "CMS"
+    ],
+    "visual": "<div class=\"art-label\"><span>WEB</span><span>DISEÑO DE PRODUCTO</span></div><div class=\"case-pipeline\"><span><b>01</b>Autor</span><span><b>02</b>Obras</span><span><b>03</b>Lectores</span><span><b>04</b>Gestión</span></div>"
+  },
+  {
+    "id": "assessment",
+    "category": "Educación",
+    "state": "Diseño de solución",
+    "slug": "evaluacion-academica-pipelines",
+    "title": "Evaluación académica con pipelines",
+    "summary": "Diseño de un flujo que vincula prácticas de curso, rúbricas, análisis automático y retroalimentación.",
+    "problem": "Evaluar proyectos de distintos cursos requiere criterios trazables, evidencias técnicas y una devolución que el estudiante pueda comprender.",
+    "decision": "La propuesta toma el sílabo y la práctica como punto de partida para definir etapas en GitLab. Integra controles de calidad, una rúbrica por actividad y la entrega de resultados por correo.",
+    "evidence": "El alcance incluye cursos de programación web, bases de datos, estructuras de datos, análisis y diseño, y desarrollo de aplicaciones.",
+    "stack": [
+      "GitLab CI/CD",
+      "SonarQube",
+      "Rúbricas",
+      "Evaluación por equipos",
+      "Retroalimentación"
+    ],
+    "visual": "<div class=\"art-label\"><span>EDUCACIÓN</span><span>DISEÑO DE SOLUCIÓN</span></div><div class=\"case-pipeline\"><span><b>01</b>Práctica</span><span><b>02</b>Pipeline</span><span><b>03</b>Rúbrica</span><span><b>04</b>Resultados</span></div>"
+  },
+  {
+    "id": "documents",
+    "category": "IA y automatización",
+    "state": "Formación aplicada",
+    "slug": "ia-gestion-documental",
+    "title": "IA aplicada a la gestión documental",
+    "summary": "Talleres de IA generativa y automatización para el trabajo administrativo en el Instituto SAM.",
+    "problem": "El trabajo administrativo combina redacción, comprobantes, documentos y archivos que exigen revisión y organización.",
+    "decision": "Los talleres reúnen redacción asistida, OCR de comprobantes, análisis de contratos, agentes para trámite documentario y revisión de varios documentos con NotebookLM.",
+    "evidence": "La formación utiliza casos del sector público y privado de Huancayo, con ejercicios, guías y materiales para aplicar las herramientas al trabajo cotidiano.",
+    "stack": [
+      "IA generativa",
+      "OCR",
+      "NotebookLM",
+      "Agentes IA",
+      "Gestión documental"
+    ],
+    "visual": "<div class=\"art-label\"><span>IA Y AUTOMATIZACIÓN</span><span>FORMACIÓN APLICADA</span></div><div class=\"case-pipeline\"><span><b>01</b>Redacción</span><span><b>02</b>Extracción</span><span><b>03</b>Revisión</span><span><b>04</b>Archivo</span></div>"
+  },
+  {
+    "id": "agents",
+    "category": "Investigación",
+    "state": "Metodología",
+    "slug": "desarrollo-software-agentes-ia",
+    "title": "Desarrollo de software con agentes IA",
+    "summary": "Metodología que relaciona el trabajo de agentes de IA con las actividades del ciclo de vida del software.",
+    "problem": "Incorporar agentes al desarrollo necesita criterios para definir tareas, revisar resultados y mantener trazabilidad entre requisitos, arquitectura y verificación.",
+    "decision": "La propuesta relaciona las actividades de los agentes con ingeniería de requisitos, arquitectura, calidad, pruebas, mantenimiento y seguridad.",
+    "evidence": "Las normas ISO se utilizan como referencias metodológicas para organizar el trabajo y la revisión de sus productos.",
+    "stack": [
+      "Agentes IA",
+      "Ciclo de vida",
+      "Requisitos",
+      "Arquitectura",
+      "Verificación"
+    ],
+    "visual": "<div class=\"art-label\"><span>INVESTIGACIÓN</span><span>METODOLOGÍA</span></div><div class=\"case-pipeline\"><span><b>01</b>Requisitos</span><span><b>02</b>Diseño</span><span><b>03</b>Desarrollo</span><span><b>04</b>Verificación</span></div>"
+  },
+  {
+    "id": "infrastructure",
+    "category": "DevOps",
+    "state": "Operación",
+    "slug": "operacion-plataformas-vps",
+    "title": "Operación de plataformas en VPS",
+    "summary": "Trabajo de despliegue y operación de sistemas web en un VPS con Docker y Dockploy.",
+    "problem": "La operación de varias aplicaciones necesita visibilidad sobre la disponibilidad, los datos y las dependencias que comparten el servidor.",
+    "decision": "El entorno reúne aplicaciones React y Python desplegadas con Docker y Dockploy en Ubuntu Server. El trabajo incluye diagnóstico de incidentes y revisión de alternativas de aislamiento y respaldo.",
+    "evidence": "El caso aborda la continuidad de las aplicaciones y el análisis de fallos desde la infraestructura hasta los servicios desplegados.",
+    "stack": [
+      "Ubuntu Server",
+      "Docker",
+      "Dockploy",
+      "React",
+      "Python"
+    ],
+    "visual": "<div class=\"art-label\"><span>DEVOPS</span><span>OPERACIÓN</span></div><div class=\"case-pipeline\"><span><b>01</b>Despliegue</span><span><b>02</b>Operación</span><span><b>03</b>Diagnóstico</span><span><b>04</b>Continuidad</span></div>"
+  },
+  {
+    "id": "channels",
+    "category": "IA y automatización",
+    "state": "Plan de implementación",
+    "slug": "atencion-digital-posicionamiento-local",
+    "title": "Atención digital y posicionamiento local",
+    "summary": "Plan para organizar WhatsApp Business y mejorar la presencia en Google de una clínica con cuatro sedes.",
+    "problem": "La atención digital necesita información coherente por sede y un proceso de gestión que recepción pueda mantener.",
+    "decision": "El plan contempla perfiles, catálogos, respuestas rápidas y un piloto de agente administrativo según la elegibilidad de cada cuenta. Incluye la revisión de fichas de Google y una línea base de visibilidad local.",
+    "evidence": "Las sedes conservan el uso habitual de sus números. La recepción mantiene la confirmación de citas y la intervención en las conversaciones, con capacitación y una guía de gestión.",
+    "stack": [
+      "WhatsApp Business",
+      "Google Negocios",
+      "IA administrativa",
+      "SEO local",
+      "Capacitación"
+    ],
+    "visual": "<div class=\"art-label\"><span>IA Y AUTOMATIZACIÓN</span><span>PLAN DE IMPLEMENTACIÓN</span></div><div class=\"case-pipeline\"><span><b>01</b>Canales</span><span><b>02</b>Atención</span><span><b>03</b>Visibilidad</span><span><b>04</b>Medición</span></div>"
+  },
+  {
+    "id": "portfolio",
+    "category": "Web",
+    "state": "Desarrollo",
+    "slug": "portafolio-profesional-cms",
+    "title": "Portafolio profesional y CMS",
+    "summary": "Sitio multipágina con catálogo de proyectos, presentación profesional y espacio privado de gestión.",
+    "problem": "Presentar una trayectoria que combina desarrollo, DevOps y docencia requiere organizar los proyectos y facilitar el contacto.",
+    "decision": "El sitio utiliza componentes React y rutas independientes con React Router, una experiencia responsive y un dashboard para guardar borradores, consultas y fichas de recursos. FastAPI implementa la API y PostgreSQL conserva los registros.",
+    "evidence": "La implementación incluye una API con validación, persistencia de registros, control de reintentos y verificación de los recorridos principales.",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "FastAPI",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "visual": "<div class=\"art-label\"><span>WEB</span><span>DESARROLLO</span></div><div class=\"case-pipeline\"><span><b>01</b>Catálogo</span><span><b>02</b>Perfil</span><span><b>03</b>Contacto</span><span><b>04</b>CMS</span></div>"
+  }
+]
